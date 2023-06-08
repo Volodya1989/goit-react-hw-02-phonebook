@@ -30,13 +30,12 @@ class App extends Component {
         (contact) => contact.name === data.name
       );
       if (isPresentOnList) {
-        alert(`${data.name} is already present in this current list`);
-        return;
+        alert(`${data.name} is already in contacts`);
+      } else {
+        return {
+          contacts: [...prevState.contacts, data],
+        };
       }
-
-      return {
-        contacts: [...prevState.contacts, data],
-      };
     });
   };
   deleteContact = (contactId) => {
@@ -73,20 +72,6 @@ class App extends Component {
           filteredContacts={filteredContacts}
           onDelete={this.deleteContact}
         />
-        {/* <ul>
-          {filteredContacts.map(({ name, number, id }) => {
-            return (
-              <li key={id}>
-                <p>
-                  {name}:<span>{number}</span>
-                </p>
-                <button type="button" onClick={this.deleteContact(id)}>
-                  delete
-                </button>
-              </li>
-            );
-          })}
-        </ul> */}
       </Container>
     );
   }
