@@ -1,6 +1,5 @@
 // Separate named imports, this makes the code more readable
 import { Component } from "react";
-import { nanoid } from "nanoid";
 
 class ContactForm extends Component {
   state = {
