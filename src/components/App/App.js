@@ -2,6 +2,7 @@
 import { Component } from "react";
 import { Container } from "components/App/App.styled";
 import ContactForm from "components/ContactForm";
+import ContactList from "components/ContactList";
 import Filter from "components/Filter";
 import { nanoid } from "nanoid";
 
@@ -38,6 +39,7 @@ class App extends Component {
       }
     });
   };
+
   deleteContact = (contactId) => {
     this.setState((prevState) => ({
       contacts: prevState.contacts.filter(
@@ -45,6 +47,7 @@ class App extends Component {
       ),
     }));
   };
+
   render() {
     const { contacts, filter } = this.state;
     const filteredContacts = contacts.filter((contact) =>
@@ -52,23 +55,15 @@ class App extends Component {
     );
     return (
       <Container>
+        <h1>Phonebook</h1>
         <ContactForm onSubmit={this.addContact} />
-
         <h1>Contacts</h1>
-        <label>
-          Find contacts by name
-          <input
-            type="text"
-            name="filter"
-            value={filter}
-            onChange={this.changeFilter}
-            id={this.loginInputId}
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan."
-            required
-          />
-        </label>
         <Filter
+          filter={filter}
+          onChangeFilter={this.changeFilter}
+          id={this.loginInputId}
+        />
+        <ContactList
           filteredContacts={filteredContacts}
           onDelete={this.deleteContact}
         />
