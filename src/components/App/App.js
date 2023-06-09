@@ -1,6 +1,6 @@
 // Separate named imports, this makes the code more readable
 import { Component } from "react";
-import { Container } from "components/App/App.styled";
+import { Container, Phonebook } from "components/App/App.styled";
 import ContactForm from "components/ContactForm";
 import ContactList from "components/ContactList";
 import Filter from "components/Filter";
@@ -55,9 +55,12 @@ class App extends Component {
     );
     return (
       <Container>
-        <h1>Phonebook</h1>
-        <ContactForm onSubmit={this.addContact} />
+        <Phonebook>
+          <h1>Phonebook</h1>
+          <ContactForm onSubmit={this.addContact} />
+        </Phonebook>
         <h1>Contacts</h1>
+
         <Filter
           filter={filter}
           onChangeFilter={this.changeFilter}
