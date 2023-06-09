@@ -14,7 +14,7 @@ export const Input = styled.input`
   background-color: rgb(255, 255, 255);
   border: 0.5px solid lightgray;
   width: 300px;
-  display: flex;
+  display: block;
   outline: none;
   transition: all 0.3s;
 

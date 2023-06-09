@@ -1,9 +1,11 @@
 import PropTypes from "prop-types";
 import ContactListItem from "components/ContactListItem";
+import { List, Text, Span } from "./ContactList.styled";
+import { CiFaceFrown } from "react-icons/ci";
 
 const ContactList = ({ filteredContacts, onDelete }) => {
   return (
-    <ul>
+    <List>
       {filteredContacts.length > 0 ? (
         filteredContacts.map(({ name, number, id }) => {
           return (
@@ -16,9 +18,14 @@ const ContactList = ({ filteredContacts, onDelete }) => {
           );
         })
       ) : (
-        <div>No contacts listed.</div>
+        <Text>
+          <Span>
+            <CiFaceFrown />
+          </Span>
+          No contacts listed
+        </Text>
       )}
-    </ul>
+    </List>
   );
 };
 
