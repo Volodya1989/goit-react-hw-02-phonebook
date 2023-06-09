@@ -23,10 +23,10 @@ class App extends Component {
 
     this.setState((prevState) => {
       const isPresentOnList = !!prevState.contacts.find(
-        (contact) => contact.name === data.name
+        (contact) => contact.name.toLowerCase() === data.name.toLowerCase()
       );
       if (isPresentOnList) {
-        alert(`${data.name} is already in contacts`);
+        alert(`${data.name} is already in contacts.`);
       } else {
         return {
           contacts: [...prevState.contacts, data],
@@ -57,11 +57,7 @@ class App extends Component {
         <Contacts>
           <h1>Contacts</h1>
 
-          <Filter
-            filter={filter}
-            onChangeFilter={this.changeFilter}
-            id={this.loginInputId}
-          />
+          <Filter filter={filter} onChangeFilter={this.changeFilter} />
           <ContactList
             filteredContacts={filteredContacts}
             onDelete={this.deleteContact}
